@@ -8,7 +8,6 @@ import com.google.gwt.event.shared.EventBus;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.google.inject.Provider;
 import com.appspot.remhelp.client.core.presenter.MainPagePresenter;
-import com.appspot.remhelp.client.core.presenter.ResponsePresenter;
 
 @GinModules({ DispatchAsyncModule.class, ClientModule.class })
 public interface ClientGinjector extends Ginjector {
@@ -18,6 +17,4 @@ public interface ClientGinjector extends Ginjector {
 	PlaceManager getPlaceManager();
 
 	Provider<MainPagePresenter> getMainPagePresenter();
-
-	Provider<ResponsePresenter> getResponsePresenter();
 }

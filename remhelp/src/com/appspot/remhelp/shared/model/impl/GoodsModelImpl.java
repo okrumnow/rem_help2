@@ -25,7 +25,7 @@ public class GoodsModelImpl implements GoodsModel {
 			
 			@Override
 			public String getname() {
-				return "Olivenöl";
+				return "OlivenÃ¶l";
 			}
 		});
 		result.put(new Category() {

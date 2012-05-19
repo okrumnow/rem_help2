@@ -1,5 +1,7 @@
-package com.appspot.remhelp.client.core;
+package com.appspot.remhelp.client.core.view;
 
+import com.appspot.remhelp.client.core.presenter.ResponsePresenter;
+import com.appspot.remhelp.client.core.presenter.ResponsePresenter.MyView;
 import com.gwtplatform.mvp.client.ViewImpl;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.ui.Button;

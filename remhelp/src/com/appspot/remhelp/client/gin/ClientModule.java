@@ -3,12 +3,12 @@ package com.appspot.remhelp.client.gin;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 import com.gwtplatform.mvp.client.gin.DefaultModule;
 import com.appspot.remhelp.client.place.ClientPlaceManager;
-import com.appspot.remhelp.client.core.Main;
-import com.appspot.remhelp.client.core.MainPagePresenter;
 import com.appspot.remhelp.client.place.DefaultPlace;
 import com.appspot.remhelp.client.place.NameTokens;
-import com.appspot.remhelp.client.core.ResponsePresenter;
-import com.appspot.remhelp.client.core.ResponseView;
+import com.appspot.remhelp.client.core.presenter.MainPagePresenter;
+import com.appspot.remhelp.client.core.presenter.ResponsePresenter;
+import com.appspot.remhelp.client.core.view.Main;
+import com.appspot.remhelp.client.core.view.ResponseView;
 
 public class ClientModule extends AbstractPresenterModule {
 

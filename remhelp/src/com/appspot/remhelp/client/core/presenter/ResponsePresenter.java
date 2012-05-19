@@ -1,4 +1,4 @@
-package com.appspot.remhelp.client.core;
+package com.appspot.remhelp.client.core.presenter;
 
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;

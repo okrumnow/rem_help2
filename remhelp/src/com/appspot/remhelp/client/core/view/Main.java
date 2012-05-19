@@ -1,5 +1,6 @@
-package com.appspot.remhelp.client.core;
+package com.appspot.remhelp.client.core.view;
 
+import com.appspot.remhelp.client.core.presenter.MainPagePresenter;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Widget;

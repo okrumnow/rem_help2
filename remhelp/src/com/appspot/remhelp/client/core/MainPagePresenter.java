@@ -21,14 +21,6 @@ public class MainPagePresenter extends
 		Presenter<MainPagePresenter.MyView, MainPagePresenter.MyProxy> {
 
 	public interface MyView extends View {
-
-		HasValue<String> getNameValue();
-
-		HasClickHandlers getSendClickHandlers();
-
-		void resetAndFocus();
-
-		void setError(String errorText);
 	}
 
 	@ProxyStandard
@@ -54,19 +46,19 @@ public class MainPagePresenter extends
 	@Override
 	protected void onBind() {
 		super.onBind();
-		registerHandler(getView().getSendClickHandlers().addClickHandler(
-				new ClickHandler() {
-					@Override
-					public void onClick(ClickEvent event) {
-						sendNameToServer();
-					}
-				}));
+//		registerHandler(getView().getSendClickHandlers().addClickHandler(
+//				new ClickHandler() {
+//					@Override
+//					public void onClick(ClickEvent event) {
+//						sendNameToServer();
+//					}
+//				}));
 	}
 
 	@Override
 	protected void onReset() {
 		super.onReset();
-		getView().resetAndFocus();
+//		getView().resetAndFocus();
 	}
 
 	/**
@@ -74,15 +66,15 @@ public class MainPagePresenter extends
 	 */
 	private void sendNameToServer() {
 		// First, we validate the input.
-		getView().setError("");
-		String textToServer = getView().getNameValue().getValue();
-		if (!FieldVerifier.isValidName(textToServer)) {
-			getView().setError("Please enter at least four characters");
-			return;
-		}
+//		getView().setError("");
+//		String textToServer = getView().getNameValue().getValue();
+//		if (!FieldVerifier.isValidName(textToServer)) {
+//			getView().setError("Please enter at least four characters");
+//			return;
+//		}
 	
 		// Then, we transmit it to the ResponsePresenter, which will do the server call
-		placeManager.revealPlace(new PlaceRequest(NameTokens.response).with(
-				ResponsePresenter.textToServerParam, textToServer));
+//		placeManager.revealPlace(new PlaceRequest(NameTokens.response).with(
+//				ResponsePresenter.textToServerParam, textToServer));
 	}
 }

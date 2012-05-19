@@ -1,0 +1,12 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		
+	</ui:style>
+	<g:DockLayoutPanel>
+		<g:north size="100.0">
+			<g:HTMLPanel>Hallo</g:HTMLPanel>
+		</g:north>
+	</g:DockLayoutPanel>
+</ui:UiBinder> 

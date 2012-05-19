@@ -3,8 +3,8 @@ package com.appspot.remhelp.client.gin;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 import com.gwtplatform.mvp.client.gin.DefaultModule;
 import com.appspot.remhelp.client.place.ClientPlaceManager;
+import com.appspot.remhelp.client.core.Main;
 import com.appspot.remhelp.client.core.MainPagePresenter;
-import com.appspot.remhelp.client.core.MainPageView;
 import com.appspot.remhelp.client.place.DefaultPlace;
 import com.appspot.remhelp.client.place.NameTokens;
 import com.appspot.remhelp.client.core.ResponsePresenter;
@@ -17,7 +17,7 @@ public class ClientModule extends AbstractPresenterModule {
 		install(new DefaultModule(ClientPlaceManager.class));
 
 		bindPresenter(MainPagePresenter.class, MainPagePresenter.MyView.class,
-				MainPageView.class, MainPagePresenter.MyProxy.class);
+				Main.class, MainPagePresenter.MyProxy.class);
 
 		bindConstant().annotatedWith(DefaultPlace.class).to(NameTokens.main);
 

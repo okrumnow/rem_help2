@@ -15,6 +15,7 @@ import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.ui.HasValue;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
+import com.gwtplatform.mvp.client.proxy.RevealRootLayoutContentEvent;
 import com.appspot.remhelp.shared.FieldVerifier;
 
 public class MainPagePresenter extends
@@ -40,7 +41,7 @@ public class MainPagePresenter extends
 
 	@Override
 	protected void revealInParent() {
-		RevealRootContentEvent.fire(this, this);
+		RevealRootLayoutContentEvent.fire(this, this);
 	}
 
 	@Override

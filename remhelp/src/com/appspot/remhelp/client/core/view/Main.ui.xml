@@ -5,8 +5,22 @@
 		
 	</ui:style>
 	<g:DockLayoutPanel>
-		<g:north size="100.0">
-			<g:HTMLPanel>Hallo</g:HTMLPanel>
+		<g:north size="15.0">
+			<g:HTMLPanel>
+				<g:HTML wordWrap="true">Remanum Hilfe</g:HTML>
+			</g:HTMLPanel>
 		</g:north>
+		<g:south size="15.0">
+			<g:HTMLPanel>
+				<g:HTML wordWrap="true">Copyright blablabla</g:HTML>
+			</g:HTMLPanel>
+		</g:south>
+		<g:center>
+			<g:SplitLayoutPanel>
+				<g:west size="100.0">
+					<g:StackLayoutPanel ui:field="stack" />
+				</g:west>
+			</g:SplitLayoutPanel>
+		</g:center>
 	</g:DockLayoutPanel>
 </ui:UiBinder> 

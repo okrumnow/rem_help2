@@ -8,15 +8,8 @@ import com.appspot.remhelp.client.place.NameTokens;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.google.inject.Inject;
 import com.google.gwt.event.shared.EventBus;
-import com.gwtplatform.mvp.client.proxy.RevealRootContentEvent;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.HasClickHandlers;
-import com.google.gwt.user.client.ui.HasValue;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
-import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.proxy.RevealRootLayoutContentEvent;
-import com.appspot.remhelp.shared.FieldVerifier;
 
 public class MainPagePresenter extends
 		Presenter<MainPagePresenter.MyView, MainPagePresenter.MyProxy> {
@@ -62,20 +55,4 @@ public class MainPagePresenter extends
 //		getView().resetAndFocus();
 	}
 
-	/**
-	 * Send the name from the nameField to the server and wait for a response.
-	 */
-	private void sendNameToServer() {
-		// First, we validate the input.
-//		getView().setError("");
-//		String textToServer = getView().getNameValue().getValue();
-//		if (!FieldVerifier.isValidName(textToServer)) {
-//			getView().setError("Please enter at least four characters");
-//			return;
-//		}
-	
-		// Then, we transmit it to the ResponsePresenter, which will do the server call
-//		placeManager.revealPlace(new PlaceRequest(NameTokens.response).with(
-//				ResponsePresenter.textToServerParam, textToServer));
-	}
 }

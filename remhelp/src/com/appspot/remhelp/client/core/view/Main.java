@@ -3,9 +3,12 @@ package com.appspot.remhelp.client.core.view;
 import java.util.Map;
 
 import com.appspot.remhelp.client.core.presenter.MainPagePresenter;
+import com.appspot.remhelp.client.core.presenter.MainPageUiHandler;
 import com.appspot.remhelp.shared.data.Category;
 import com.appspot.remhelp.shared.data.Good;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Tree;
@@ -24,6 +27,7 @@ public class Main extends ViewImpl implements MainPagePresenter.MyView {
 	}
 
 	private Widget widget;
+	private MainPageUiHandler uiHandlers;
 
 	public Main() {
 		widget = uiBinder.createAndBindUi(this);
@@ -42,6 +46,15 @@ public class Main extends ViewImpl implements MainPagePresenter.MyView {
 
 	private Widget buildTree(Map<Category, Iterable<Good>> goods) {
 		Tree result = new Tree();
+		result.addSelectionHandler(new SelectionHandler<TreeItem>() {
+			
+			@Override
+			public void onSelection(SelectionEvent<TreeItem> event) {
+				TreeItem item = event.getSelectedItem();
+				String good = item.getText();
+				uiHandlers.showGoodsDetails(good);
+			}
+		});
 		for (Category cat : goods.keySet()) {
 			TreeItem catNode = new TreeItem(cat.getName());
 			for (Good good : goods.get(cat)) {
@@ -51,5 +64,11 @@ public class Main extends ViewImpl implements MainPagePresenter.MyView {
 			result.addItem(catNode);
 		}
 		return result;
+	}
+
+	@Override
+	public void setUiHandlers(MainPageUiHandler uiHandlers) {
+		this.uiHandlers = uiHandlers;
+		
 	}
 }

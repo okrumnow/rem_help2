@@ -2,6 +2,7 @@ package com.appspot.remhelp.client.core.presenter;
 
 import java.util.Map;
 
+import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.ContentSlot;
@@ -16,13 +17,15 @@ import com.google.inject.Inject;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.GwtEvent.Type;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
+import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.gwtplatform.mvp.client.proxy.RevealRootLayoutContentEvent;
 
 public class MainPagePresenter extends
-		Presenter<MainPagePresenter.MyView, MainPagePresenter.MyProxy> {
+		Presenter<MainPagePresenter.MyView, MainPagePresenter.MyProxy>
+		implements MainPageUiHandler {
 
-	public interface MyView extends View {
+	public interface MyView extends View, HasUiHandlers<MainPageUiHandler> {
 		void setGoodsTree(Map<Category, Iterable<Good>> goods);
 	}
 
@@ -45,6 +48,8 @@ public class MainPagePresenter extends
 
 		this.placeManager = placeManager;
 		this.model = model;
+
+		getView().setUiHandlers(this);
 	}
 
 	@Override
@@ -68,6 +73,13 @@ public class MainPagePresenter extends
 	protected void onReset() {
 		super.onReset();
 		getView().setGoodsTree(model.getGoodsByCategories());
+	}
+
+	@Override
+	public void showGoodsDetails(String good) {
+		PlaceRequest request = new PlaceRequest(NameTokens.good);
+		request = request.with("g", good);
+		placeManager.revealPlace(request);
 	}
 
 }

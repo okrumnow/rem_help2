@@ -43,8 +43,8 @@ public class GoodsModelImpl implements GoodsModel {
 
 	@Override
 	public Good getGoodByName(String goodName) {
-		if (goodName == "oliveoil") return OLIVEOIL;
-		else if (goodName == "olive") return OLIVE;
+		if (goodName.toLowerCase().equals("olivenöl")) return OLIVEOIL;
+		else if (goodName.toLowerCase().equals("oliven")) return OLIVE;
 		else throw new IllegalArgumentException("Unknown good '"+goodName+"'");
 	}
 

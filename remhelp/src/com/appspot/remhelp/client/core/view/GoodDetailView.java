@@ -4,10 +4,13 @@ import com.appspot.remhelp.client.core.presenter.GoodDetailPresenter;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewImpl;
-import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.Overflow;
+import com.smartgwt.client.types.VisibilityMode;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.Label;
+import com.smartgwt.client.widgets.grid.ListGrid;
+import com.smartgwt.client.widgets.layout.SectionStack;
+import com.smartgwt.client.widgets.layout.SectionStackSection;
 import com.smartgwt.client.widgets.layout.VLayout;
 
 public class GoodDetailView extends ViewImpl implements
@@ -15,6 +18,8 @@ public class GoodDetailView extends ViewImpl implements
 
 	private final Widget widget;
 	private Canvas viewLabel;
+	private ListGrid donationGrid;
+	private ListGrid cityEquipmentGrid;
 
 	@Inject
 	public GoodDetailView() {
@@ -24,17 +29,67 @@ public class GoodDetailView extends ViewImpl implements
 	private Widget getDetails() {
 		VLayout result = new VLayout();
 		result.setOverflow(Overflow.AUTO);
+		result.setMembersMargin(10);
 		
-		result.addMember(new BlueBox(null, 200, "Box 1"));
-		viewLabel = new BlueBox(null, 100, "Box 2");
+		viewLabel = new Label("Name der Ware");
+		viewLabel.setHeight("1em");
 		result.addMember(viewLabel);
-		result.addMember(new BlueBox(null, 600, "Box 3"));
-		result.addMember(new BlueBox(null, 200, "Box 4"));
+		
+		SectionStack stack = new SectionStack();
+		stack.setVisibilityMode(VisibilityMode.MULTIPLE);
+//		result.addMember(getProduction());
+//		result.addMember(getManufacturing());
+//		result.addMember(getEstateEquipment());
+		stack.addSection(buildStack("Instandhaltung", getCityEquipment()));
+		stack.addSection(buildStack("Spenden", getCityDonation()));
+		result.addMember(stack);
 		
 		return result;
 	}
 
+	private SectionStackSection buildStack(String title, Canvas cancas) {
+		SectionStackSection result = new SectionStackSection();
+		result.setTitle(title);
+		result.addItem(cancas);
+		return result;
+	}
 
+	private Canvas getCityDonation() {
+		VLayout result = new VLayout();
+		result.setHeight(100);
+		Label label = new Label("Diese Ware kann in folgenden Stadtgebäuden für deren Ausbau gespendet werden:");
+		label.setHeight("1em");
+		result.addMember(label);
+		donationGrid = new ListGrid();
+		result.addMember(donationGrid);
+		return result;
+	}
+
+	private Canvas getCityEquipment() {
+		VLayout result = new VLayout();
+		result.setHeight(100);
+		Label label = new Label("Diese Ware kann als Instandhaltung in folgenden Stadtgebäuden eingesetzt werden:");
+		label.setHeight("1em");
+		result.addMember(label);
+		cityEquipmentGrid = new ListGrid();
+		result.addMember(cityEquipmentGrid);
+		return result;
+	}
+
+	private Canvas getEstateEquipment() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private Canvas getManufacturing() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private Canvas getProduction() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public Widget asWidget() {
@@ -46,20 +101,4 @@ public class GoodDetailView extends ViewImpl implements
 		viewLabel.setContents(name);
 		
 	}
-	
-	class BlueBox extends Label {  
-		  
-        public BlueBox(String contents) {  
-            setAlign(Alignment.CENTER);  
-            setBorder("1px solid #808080");  
-            setBackgroundColor("#C3D9FF");  
-            setContents(contents);  
-        }  
-  
-        public BlueBox(Integer width, Integer height, String contents) {  
-            this(contents);  
-            if (width != null) setWidth(width);  
-            if (height != null) setHeight(height);  
-        }  
-    }  
 }

@@ -17,11 +17,15 @@ import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewImpl;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.StackLayoutPanel;
+import com.google.gwt.user.client.ui.SplitLayoutPanel;
+import com.google.gwt.user.client.ui.SimplePanel;
 
 public class Main extends ViewImpl implements MainPagePresenter.MyView {
 
 	private static MainUiBinder uiBinder = GWT.create(MainUiBinder.class);
-	@UiField StackLayoutPanel stack;
+	@UiField
+	StackLayoutPanel stack;
+	@UiField SimplePanel center;
 
 	interface MainUiBinder extends UiBinder<Widget, Main> {
 	}
@@ -44,10 +48,20 @@ public class Main extends ViewImpl implements MainPagePresenter.MyView {
 		stack.add(buildTree(goods), new HTML("Goods"), 25.0);
 	}
 
+	@Override
+	public void setInSlot(Object slot, Widget content) {
+		if (slot == MainPagePresenter.TYPE_SetGoodsDetails) {
+			center.clear();
+			center.add(content);
+		} else {
+			super.setInSlot(slot, content);
+		}
+	}
+
 	private Widget buildTree(Map<Category, Iterable<Good>> goods) {
 		Tree result = new Tree();
 		result.addSelectionHandler(new SelectionHandler<TreeItem>() {
-			
+
 			@Override
 			public void onSelection(SelectionEvent<TreeItem> event) {
 				TreeItem item = event.getSelectedItem();
@@ -69,6 +83,6 @@ public class Main extends ViewImpl implements MainPagePresenter.MyView {
 	@Override
 	public void setUiHandlers(MainPageUiHandler uiHandlers) {
 		this.uiHandlers = uiHandlers;
-		
+
 	}
 }

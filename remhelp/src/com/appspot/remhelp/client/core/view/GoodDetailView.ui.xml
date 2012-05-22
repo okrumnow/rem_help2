@@ -6,7 +6,9 @@
 	ui:generateKeys='com.google.gwt.i18n.rebind.keygen.MD5KeyGenerator'
 	ui:generateLocales='default'>
 
-	<g:HTMLPanel>
-		<g:InlineHTML ui:field="title"/>
-	</g:HTMLPanel>
+		<g:AbsolutePanel>
+			<g:at left="96" top="124">
+				<g:Label ui:field="title" text="ABC" width="196px" height="16px"/>
+			</g:at>
+		</g:AbsolutePanel>
 </ui:UiBinder>

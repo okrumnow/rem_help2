@@ -20,6 +20,9 @@
 				<g:west size="100.0">
 					<g:StackLayoutPanel ui:field="stack" />
 				</g:west>
+				<g:center>
+					<g:SimplePanel ui:field="center"/>
+				</g:center>
 			</g:SplitLayoutPanel>
 		</g:center>
 	</g:DockLayoutPanel>

@@ -4,9 +4,11 @@ import com.appspot.remhelp.client.core.presenter.GoodDetailPresenter;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewImpl;
+import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.types.Overflow;
 import com.smartgwt.client.widgets.Canvas;
-import com.smartgwt.client.widgets.tab.Tab;
-import com.smartgwt.client.widgets.tab.TabSet;
+import com.smartgwt.client.widgets.Label;
+import com.smartgwt.client.widgets.layout.VLayout;
 
 public class GoodDetailView extends ViewImpl implements
 		GoodDetailPresenter.MyView {
@@ -19,22 +21,17 @@ public class GoodDetailView extends ViewImpl implements
 		widget = getDetails();
 	}
 	
-	private TabSet getDetails() {
-		TabSet tabSet = new TabSet();  
-        Tab viewTab = new Tab("View");  
-  
-        viewLabel = new Canvas();  
-        viewLabel.setContents("[Record Details can be dispalyed here]");  
-        viewTab.setPane(viewLabel);  
-  
-        Tab editTab = new Tab("Edit");  
-  
-        Canvas editLabel = new Canvas();  
-        editLabel.setContents("[Form for edits can be dispalyed here]");  
-        editTab.setPane(editLabel);  
-  
-        tabSet.setTabs(viewTab, editTab);
-		return tabSet;
+	private Widget getDetails() {
+		VLayout result = new VLayout();
+		result.setOverflow(Overflow.AUTO);
+		
+		result.addMember(new BlueBox(null, 200, "Box 1"));
+		viewLabel = new BlueBox(null, 100, "Box 2");
+		result.addMember(viewLabel);
+		result.addMember(new BlueBox(null, 600, "Box 3"));
+		result.addMember(new BlueBox(null, 200, "Box 4"));
+		
+		return result;
 	}
 
 
@@ -49,4 +46,20 @@ public class GoodDetailView extends ViewImpl implements
 		viewLabel.setContents(name);
 		
 	}
+	
+	class BlueBox extends Label {  
+		  
+        public BlueBox(String contents) {  
+            setAlign(Alignment.CENTER);  
+            setBorder("1px solid #808080");  
+            setBackgroundColor("#C3D9FF");  
+            setContents(contents);  
+        }  
+  
+        public BlueBox(Integer width, Integer height, String contents) {  
+            this(contents);  
+            if (width != null) setWidth(width);  
+            if (height != null) setHeight(height);  
+        }  
+    }  
 }

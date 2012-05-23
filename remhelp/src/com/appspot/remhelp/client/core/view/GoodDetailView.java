@@ -4,6 +4,7 @@ import com.appspot.remhelp.client.core.presenter.GoodDetailPresenter;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewImpl;
+import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.Overflow;
 import com.smartgwt.client.types.VisibilityMode;
 import com.smartgwt.client.widgets.Canvas;
@@ -51,14 +52,14 @@ public class GoodDetailView extends ViewImpl implements
 		SectionStackSection result = new SectionStackSection();
 		result.setTitle(title);
 		result.addItem(cancas);
+		result.setExpanded(true);
 		return result;
 	}
 
 	private Canvas getCityDonation() {
 		VLayout result = new VLayout();
 		result.setHeight(100);
-		Label label = new Label("Diese Ware kann in folgenden Stadtgebäuden für deren Ausbau gespendet werden:");
-		label.setHeight("1em");
+		Label label = getHeaderLabel("Diese Ware kann in folgenden Stadtgebäuden für deren Ausbau gespendet werden:");
 		result.addMember(label);
 		donationGrid = new ListGrid();
 		result.addMember(donationGrid);
@@ -68,8 +69,7 @@ public class GoodDetailView extends ViewImpl implements
 	private Canvas getCityEquipment() {
 		VLayout result = new VLayout();
 		result.setHeight(100);
-		Label label = new Label("Diese Ware kann als Instandhaltung in folgenden Stadtgebäuden eingesetzt werden:");
-		label.setHeight("1em");
+		Label label = getHeaderLabel("Diese Ware kann als Instandhaltung in folgenden Stadtgebäuden eingesetzt werden:");
 		result.addMember(label);
 		cityEquipmentGrid = new ListGrid();
 		result.addMember(cityEquipmentGrid);
@@ -91,6 +91,15 @@ public class GoodDetailView extends ViewImpl implements
 		return null;
 	}
 
+	private Label getHeaderLabel(String text) {
+		Label label = new Label(text);
+		label.setMargin(10);
+		label.setAlign(Alignment.CENTER);
+		label.setStyleName("remhelp-goodsdetail-header");
+		label.setHeight("1em");
+		return label;
+	}
+
 	@Override
 	public Widget asWidget() {
 		return widget;
@@ -99,6 +108,5 @@ public class GoodDetailView extends ViewImpl implements
 	@Override
 	public void setTitle(String name) {
 		viewLabel.setContents(name);
-		
 	}
 }

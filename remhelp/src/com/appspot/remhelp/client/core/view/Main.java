@@ -33,7 +33,6 @@ public class Main extends ViewImpl implements MainPagePresenter.MyView {
 	private Widget createLayout() {
 		VLayout result = new VLayout();
 		result.setMargin(10);
-		result.setBackgroundColor("yellow");
 		result.setWidth100();
 		result.setHeight100();
 		
@@ -63,7 +62,6 @@ public class Main extends ViewImpl implements MainPagePresenter.MyView {
 		navigation.addSection(goodsSection);
 		
 		detailPane = new VLayout();
-		detailPane.setBackgroundColor("orange");
 
 		center.addMember(navigation);
 		center.addMember(detailPane);

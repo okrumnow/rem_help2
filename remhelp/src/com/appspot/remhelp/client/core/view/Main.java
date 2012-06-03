@@ -1,13 +1,10 @@
 package com.appspot.remhelp.client.core.view;
 
-import java.util.Map;
-
 import com.appspot.remhelp.client.core.presenter.MainPagePresenter;
 import com.appspot.remhelp.client.core.presenter.MainPageUiHandler;
-import com.appspot.remhelp.shared.data.Category;
-import com.appspot.remhelp.shared.data.Good;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewImpl;
+import com.smartgwt.client.data.DataSource;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.Overflow;
 import com.smartgwt.client.widgets.Canvas;
@@ -17,7 +14,6 @@ import com.smartgwt.client.widgets.layout.LayoutSpacer;
 import com.smartgwt.client.widgets.layout.SectionStack;
 import com.smartgwt.client.widgets.layout.SectionStackSection;
 import com.smartgwt.client.widgets.layout.VLayout;
-import com.smartgwt.client.widgets.tree.TreeGrid;
 
 public class Main extends ViewImpl implements MainPagePresenter.MyView {
 
@@ -77,7 +73,7 @@ public class Main extends ViewImpl implements MainPagePresenter.MyView {
 	}
 
 	@Override
-	public void setGoodsTree(Map<Category, Iterable<Good>> goods) {
+	public void setGoodsTree(DataSource tree) {
 	}
 
 	@Override
@@ -91,15 +87,6 @@ public class Main extends ViewImpl implements MainPagePresenter.MyView {
 		} else {
 			super.setInSlot(slot, content);
 		}
-	}
-
-	private Widget buildTree(Map<Category, Iterable<Good>> goods) {
-		TreeGrid result = new TreeGrid();
-		for (Category cat : goods.keySet()) {
-			for (Good good : goods.get(cat)) {
-			}
-		}
-		return result;
 	}
 
 	@Override

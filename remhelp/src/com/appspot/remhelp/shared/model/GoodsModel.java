@@ -1,13 +1,11 @@
 package com.appspot.remhelp.shared.model;
 
-import java.util.Map;
-
-import com.appspot.remhelp.shared.data.Category;
 import com.appspot.remhelp.shared.data.Good;
+import com.smartgwt.client.data.DataSource;
 
 public interface GoodsModel {
 
-	Map<Category, Iterable<Good>> getGoodsByCategories();
+	DataSource getGoodsByCategories();
 
 	Good getGoodByName(String goodName);
 }

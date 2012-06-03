@@ -20,13 +20,14 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.gwtplatform.mvp.client.proxy.RevealRootLayoutContentEvent;
+import com.smartgwt.client.data.DataSource;
 
 public class MainPagePresenter extends
 		Presenter<MainPagePresenter.MyView, MainPagePresenter.MyProxy>
 		implements MainPageUiHandler {
 
 	public interface MyView extends View, HasUiHandlers<MainPageUiHandler> {
-		void setGoodsTree(Map<Category, Iterable<Good>> goods);
+		void setGoodsTree(DataSource tree);
 	}
 
 	@ProxyStandard

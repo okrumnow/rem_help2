@@ -2,11 +2,11 @@ package com.appspot.remhelp.shared.model.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import com.appspot.remhelp.shared.data.Category;
 import com.appspot.remhelp.shared.data.Good;
 import com.appspot.remhelp.shared.model.GoodsModel;
+import com.smartgwt.client.data.DataSource;
 
 public class GoodsModelImpl implements GoodsModel {
 
@@ -26,7 +26,7 @@ public class GoodsModelImpl implements GoodsModel {
 	};
 
 	@Override
-	public Map<Category, Iterable<Good>> getGoodsByCategories() {
+	public DataSource getGoodsByCategories() {
 		HashMap<Category, Iterable<Good>> result = new HashMap<Category, Iterable<Good>>();
 		ArrayList<Good> foods = new ArrayList<Good>();
 		foods.add(OLIVE);
@@ -38,7 +38,7 @@ public class GoodsModelImpl implements GoodsModel {
 				return "Nahrung";
 			}
 		}, foods);
-		return result;
+		return null;
 	}
 
 	@Override
